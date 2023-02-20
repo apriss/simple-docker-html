@@ -1,7 +1,7 @@
 pipeline { 
  
   environment { 
-    dockerimagename = "ekawafs/nodeapp" 
+    dockerimagename = "ekawafs/nginxweb" 
     dockerImage = "" 
   } 
  
@@ -11,7 +11,7 @@ pipeline {
  
     stage('Checkout Source') { 
       steps { 
-        git 'https://github.com/ekazfarm/nodeapp-test.git' 
+        git 'https://github.com/ekazfarm/simple-docker-html.git' 
       } 
     } 
  
