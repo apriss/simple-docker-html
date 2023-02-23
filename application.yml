@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auto-demo-deploy
+  name: nginxweb
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: auto-demo
+      app: nginxweb
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -17,10 +17,10 @@ spec:
   template:
     metadata:
       labels:
-        app: auto-demo
+        app: nginxweb
     spec:
       containers:
-      - name: auto-demo-container
+      - name: nginxweb-container
         image: ekawafs/nginxweb:latest
         ports:
         - containerPort: 80 
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: auto-demo-svc
+  name: nginxweb
   namespace: default
   labels:
-    app: auto-demo
+    app: nginxweb
 spec:
   type: LoadBalancer
   ports:
@@ -39,4 +39,4 @@ spec:
     nodePort: 31000
     protocol: TCP
   selector:
-    app: auto-demo
+    app: nginxweb
