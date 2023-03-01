@@ -40,6 +40,7 @@ pipeline {
       steps {
         script {
           withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubernetesku', serverUrl: 'https://192.168.14.11:6443']]) {
+             sh 'kubectl delete -f application.yml'
              sh 'kubectl apply -f application.yml'
            }
           }
