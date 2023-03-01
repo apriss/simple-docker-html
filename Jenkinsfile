@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "ekawafs/nginxweb:v3.0"
+    dockerimagename = "ekawafs/nginxweb:v3.1"
     dockerImage = ""
   }
 
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("v3.0")
+            dockerImage.push("v3.1")
           }
         }
       }
