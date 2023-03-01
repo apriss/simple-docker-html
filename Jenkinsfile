@@ -40,8 +40,7 @@ pipeline {
       steps {
         script {
           withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubernetesku', serverUrl: 'https://192.168.14.11:6443']]) {
-             sh 'kubectl delete deployment nginxweb'
-             sh 'kubectl delete svc nodeapp-service'
+
              sh 'kubectl apply -f application.yml'
            }
           }
