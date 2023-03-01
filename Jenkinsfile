@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "ekawafs/nginxweb:v1.4"
+    dockerimagename = "ekawafs/nginxweb:v3.0"
     dockerImage = ""
   }
 
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("v1.4")
+            dockerImage.push("v3.0")
           }
         }
       }
@@ -39,7 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubernetesku', serverUrl: 'https://10.10.10.10:6443']]) {
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubernetesku', serverUrl: 'https://192.168.14.11:6443']]) {
              sh 'kubectl apply -f application.yml'
            }
           }
