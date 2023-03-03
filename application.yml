@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: tesnginx-container
-        image: apriss/tesnginx:v1
+        image: apriss/tesnginx:v1.0
         ports:
         - containerPort: 80 
 ---
