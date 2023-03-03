@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginxweb
+  name: tesnginx
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels: 
-      app: nginxweb
+      app: tesnginx
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -17,21 +17,21 @@ spec:
   template:
     metadata:
       labels:
-        app: nginxweb
+        app: tesnginx
     spec:
       containers:
-      - name: nginxweb-container
-        image: ekawafs/nginxweb:v3.1
+      - name: tesnginx-container
+        image: apriss/tesnginx:v1
         ports:
         - containerPort: 80 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginxweb
+  name: tesnginx
   namespace: default
   labels:
-    app: nginxweb
+    app: tesnginx
 spec:
   type: LoadBalancer
   ports:
@@ -39,4 +39,4 @@ spec:
     nodePort: 31000
     protocol: TCP
   selector:
-    app: nginxweb
+    app: tesnginx
