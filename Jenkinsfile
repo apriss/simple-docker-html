@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "ekawafs/nginxweb:v3.1"
+    dockerimagename = "apriss/tesnginx:v1"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
 
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/ekazfarm/simple-docker-html.git'
+        git 'https://github.com/apriss/simple-docker-html.git'
       }
     }
 
@@ -25,12 +25,12 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhublogin'
+               registryCredential = 'dockerku'
            }
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("v3.1")
+            dockerImage.push("v1")
           }
         }
       }
@@ -39,9 +39,9 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubernetesku', serverUrl: 'https://192.168.14.11:6443']]) {
-             sh 'kubectl delete deployment --force nginxweb'
-             sh 'kubectl delete svc --force nginxweb'
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'rke2ku', serverUrl: 'https://10.1.1.30:6443']]) {
+             sh 'kubectl delete deployment --force tesnginx'
+             sh 'kubectl delete svc --force tesnginx'
              sh 'kubectl apply -f application.yml'
            }
           }
