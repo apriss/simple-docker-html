@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "apriss/tesnginx:v1"
+    dockerimagename = "apriss/tesnginx:v1.0"
     dockerImage = ""
   }
 
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-            dockerImage.push("v1")
+            dockerImage.push("v1.0")
           }
         }
       }
