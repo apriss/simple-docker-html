@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: tesnginx-container
-        image: apriss/tesnginx:v1.0
+        image: demo.goharbor.io/proyek-apri/apriss/tesnginx:v2.0
         ports:
         - containerPort: 80 
 ---
