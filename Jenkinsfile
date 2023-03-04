@@ -39,9 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'rke2ku', serverUrl: 'https://10.1.1.30:6443']]) {
-             sh 'kubectl delete deployment --force tesnginx'
-             sh 'kubectl delete svc --force tesnginx'
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubetoday', serverUrl: 'https://10.1.1.30:6443']]) {
              sh 'kubectl apply -f application.yml'
            }
           }
