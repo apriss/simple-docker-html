@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "tesnginx:v2.0"
+    dockerimagename = "apriss/tesnginx:v2.0"
     dockerImage = ""
   }
 
@@ -29,7 +29,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'https://demo.goharbor.io/proyek-apri/', registryCredential ) {
+          docker.withRegistry( 'https://demo.goharbor.io/', registryCredential ) {
             dockerImage.push("v2.0")
           }
         }
