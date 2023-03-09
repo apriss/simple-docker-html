@@ -25,11 +25,11 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'goharbor'
+               registryCredential = 'harborlocal'
            }
       steps{
         script {
-          docker.withRegistry( 'https://demo.goharbor.io/', registryCredential ) {
+          docker.withRegistry( 'https://harbor.sentuy.local/', registryCredential ) {
             dockerImage.push("v2.0")
           }
         }
