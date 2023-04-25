@@ -29,7 +29,7 @@ pipeline {
            }
       steps{
         script {
-          docker.withRegistry( 'https://hub.docker.com/repositories/apriss', registryCredential ) {
+          docker.withRegistry( 'https://hub.docker.com', registryCredential ) {
             dockerImage.push("v2.0")
           }
         }
