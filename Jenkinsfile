@@ -25,11 +25,11 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'harborlocal'
+               registryCredential = 'dockerhub'
            }
       steps{
         script {
-          docker.withRegistry( 'https://harbor.sentuy.local/', registryCredential ) {
+          docker.withRegistry( 'https://registry.hub.docker.com/', registryCredential ) {
             dockerImage.push("v2.0")
           }
         }
@@ -39,7 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubetoday', serverUrl: 'https://10.1.1.30:6443']]) {
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubeku', serverUrl: 'https://10.1.1.21:6443']]) {
              sh 'kubectl apply -f application.yml'
            }
           }
