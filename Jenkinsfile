@@ -39,7 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubeku', serverUrl: 'https://10.1.1.21:6443']]) {
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kube-rook', serverUrl: 'https://10.1.1.41:6443']]) {
              sh 'kubectl apply -f application.yml'
            }
           }
