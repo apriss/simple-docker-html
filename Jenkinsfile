@@ -25,7 +25,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerhubku'
+               registryCredential = 'dockerku'
            }
       steps{
         script {
@@ -39,7 +39,7 @@ pipeline {
     stage('Deploying App to Kubernetes') {
       steps {
         script {
-          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kube-rook', serverUrl: 'https://10.1.1.41:6443']]) {
+          withKubeCredentials(kubectlCredentials: [[credentialsId: 'kubeku', serverUrl: 'https://10.1.1.120:6443']]) {
              sh 'kubectl apply -f application.yml'
            }
           }
