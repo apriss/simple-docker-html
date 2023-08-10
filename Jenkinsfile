@@ -25,7 +25,7 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'harborku'
+               registryCredential = 'harbor'
            }
       steps{
         script {
