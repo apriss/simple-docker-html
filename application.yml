@@ -22,10 +22,10 @@ spec:
       containers:
       - name: tesnginx-container
         image: harbor.sentuy.lan/demo/tesnginx:v2.0
-        imagePullSecrets:
-        - name: regcred
         ports:
         - containerPort: 80 
+      imagePullSecrets:
+        - name: regcred
 ---
 apiVersion: v1
 kind: Service
