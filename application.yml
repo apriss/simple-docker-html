@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: tesnginx-container
-        image: harbor.sentuy.lan/demo/tesnginx:v2.0
+        image: 10.1.1.123/demo/tesnginx:v2.0
         ports:
         - containerPort: 80 
       imagePullSecrets:
