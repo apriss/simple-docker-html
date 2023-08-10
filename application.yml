@@ -22,6 +22,8 @@ spec:
       containers:
       - name: tesnginx-container
         image: harbor.sentuy.lan/demo/tesnginx:v2.0
+        imagePullSecrets:
+        - name: regcred
         ports:
         - containerPort: 80 
 ---
@@ -40,5 +42,4 @@ spec:
     protocol: TCP
   selector:
     app: tesnginx
-  imagePullSecrets:
-    - name: regcred
+  
