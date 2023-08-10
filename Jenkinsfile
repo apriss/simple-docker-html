@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "apriss/tesnginx:v2.0"
+    dockerimagename = "demo/tesnginx:v2.0"
     dockerImage = ""
   }
 
@@ -25,11 +25,11 @@ pipeline {
 
     stage('Pushing Image') {
       environment {
-               registryCredential = 'dockerku'
+               registryCredential = 'harborku'
            }
       steps{
         script {
-          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+          docker.withRegistry( 'https://harbor.sentuy.lan', registryCredential ) {
             dockerImage.push("v2.0")
           }
         }
