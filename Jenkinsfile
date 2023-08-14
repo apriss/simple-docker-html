@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "demo/tesnginx:v3.0"
+    dockerimagename = "demo/tesnginx:v2.1"
     dockerImage = ""
   }
 
@@ -30,7 +30,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry( 'https://harbor.sentuy.lan', registryCredential ) {
-            dockerImage.push("v2.0")
+            dockerImage.push("v2.1")
           }
         }
       }
