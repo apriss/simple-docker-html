@@ -1,7 +1,7 @@
 pipeline {
 
   environment {
-    dockerimagename = "demo/tesnginx:v2.0"
+    dockerimagename = "demo/tesnginx:v3.0"
     dockerImage = ""
   }
 
